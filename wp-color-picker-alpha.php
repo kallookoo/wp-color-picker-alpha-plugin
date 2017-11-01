@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: WP Color Picker Alpha
- * Plugin URI: https://github.com/23r9i0/wp-color-picker-alpha
+ * Plugin URI: https://github.com/kallookoo/wp-color-picker-alpha
  * Description: Plugin to test wp-color-picker-alpha script
  * Version: 1.2.2
- * Author: Sergio P.A. ( 23r9i0 )
- * Author URI: http://dsergio.com/
+ * Author: Sergio ( kallookoo )
+ * Author URI: https://dsergio.com/
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -100,11 +100,12 @@ class WP_Color_Picker_Alpha {
 				'name'          => 'alpha_color',
 			)
 		);
+
 		add_settings_field( 'alpha_color_clear', 'Color without default color', array( $this, 'field_color' ), $this->_plugin_hook, 'wp-color-picker-alpha_alpha_color',
 			array(
 				'alpha'         => 1,
 				'current_color' => $this->_current_colors['alpha_color_clear'],
-				'name'          => 'alpha_color',
+				'name'          => 'alpha_color_clear',
 			)
 		);
 		add_settings_field( 'alpha_color_reset', 'Color with default color and reset Alpha Channel', array( $this, 'field_color' ), $this->_plugin_hook, 'wp-color-picker-alpha_alpha_color',
@@ -142,6 +143,7 @@ class WP_Color_Picker_Alpha {
 				'width'         => 'false',
 			)
 		);
+
 	}
 
 	public function field_color( $args ) {
