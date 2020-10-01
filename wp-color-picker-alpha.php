@@ -25,6 +25,7 @@ class WP_Color_Picker_Alpha {
 		'alpha_color_reset_clear'    => 'rgba(230,126,34,0.5)',
 		'alpha_color_custom_width'   => 'rgba(142,68,173,0.5)',
 		'alpha_color_disabled_width' => 'rgba(155,89,182,0.5)',
+		'alpha_color_hex_color'      => '#000000',
 		'normal_color'               => '#16a085',
 		'normal_color_clear'         => '#27ae60',
 	);
@@ -144,10 +145,20 @@ class WP_Color_Picker_Alpha {
 			)
 		);
 
+		add_settings_field( 'alpha_color_hex_color', 'Color with default color, hex color', array( $this, 'field_color' ), $this->_plugin_hook, 'wp-color-picker-alpha_alpha_color',
+			array(
+				'alpha'         => 1,
+				'current_color' => $this->_current_colors['alpha_color_hex_color'],
+				'default_color' => $this->_defaults_colors['alpha_color_hex_color'],
+				'name'          => 'alpha_color_hex_color',
+				'type'          => 'hex',
+			)
+		);
+
 	}
 
 	public function field_color( $args ) {
-		$attributes = isset( $args['current_color'] ) ? ' value="'.$args['current_color'].'"' : ' value=""';
+		$attributes = ( isset( $args['current_color'] ) ? ' value="'.$args['current_color'].'"' : ' value=""' );
 
 		if ( isset( $args['default_color'] ) )
 			$attributes .= ' data-default-color="' . $args['default_color'] . '"';
@@ -155,22 +166,29 @@ class WP_Color_Picker_Alpha {
 		if ( isset( $args['alpha'] ) ) {
 			switch ( $args['alpha'] ) {
 				case 1:
-					$attributes .= ' data-alpha="true"';
+					$attributes .= ' data-alpha-enabled="true"';
 					break;
 				case 2:
-					$attributes .= ' data-alpha="true"';
-					$attributes .= ' data-reset-alpha="true"';
+					$attributes .= ' data-alpha-enabled="true"';
+					$attributes .= ' data-alpha-reset="true"';
 					break;
 				default:
+					$attributes .= ' data-alpha-enabled="false"';
 					break;
 			}
 		}
 
-		if ( isset( $args['width'] ) )
-			$attributes .= ' data-custom-width="' . $args['width'] . '"';
+		if ( isset( $args['width'] ) ) {
+			$attributes .= ' data-alpha-custom-width="' . $args['width'] . '"';
+		}
 
-		if ( isset( $args['name'] ) )
+		if ( isset( $args['type'] ) ) {
+			$attributes .= ' data-alpha-color-type="' . $args['type'] . '"';
+		}
+
+		if ( isset( $args['name'] ) ) {
 			printf( '<input type="text" class="color-picker" name="wp-color-picker-alpha[%1$s]"%2$s>', $args['name'], $attributes );
+		}
 	}
 
 	public function admin_enqueue_scripts( $hook ) {
