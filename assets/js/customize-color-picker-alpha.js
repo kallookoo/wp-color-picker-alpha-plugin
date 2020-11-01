@@ -1,13 +1,13 @@
 /**
- * A colorpicker control.
+ * Color picker customize control.
  */
 
 ( function ( $, api ) {
 	/**
 	 * A colorpicker control.
 	 *
-	 * @class     wp.customize.AlphaColorControl
-	 * @arguments wp.customize.Control
+	 * @class    wp.customize.AlphaColorControl
+	 * @augments wp.customize.Control
 	 */
 	api.AlphaColorControl = api.Control.extend(/** @lends wp.customize.AlphaColorControl.prototype */{
 		ready: function() {
@@ -21,6 +21,7 @@
 				change: function( event, ui ) {
 					if ( inited ) {
 						var current = ( isHueSlider ? ui.color.h() : picker.wpColorPicker( 'color' ) );
+						// It is only updated if they are different values.
 						if ( color !== current.replace( /\s+/g, '' ) ) {
 							control.setting.set( current );
 						}

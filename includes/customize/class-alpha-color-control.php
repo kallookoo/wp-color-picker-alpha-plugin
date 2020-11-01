@@ -34,12 +34,10 @@ class Alpha_Color_Control extends WP_Customize_Color_Control {
 	public function enqueue() {
 		parent::enqueue();
 
-		wp_enqueue_script( WP_COLOR_PICKER_ALPHA_SCRIPT_NAME );
-
 		wp_enqueue_script(
-			WP_COLOR_PICKER_ALPHA_SCRIPT_NAME . '-customize-alpha-color-control',
-			plugins_url( 'assets/js/customize/alpha-color-control.js', WP_COLOR_PICKER_ALPHA_PLUGIN_FILE ),
-			[ 'customize-controls' ],
+			WP_COLOR_PICKER_ALPHA_SCRIPT_NAME . '-customize-color-picker-alpha',
+			plugins_url( 'assets/js/customize-color-picker-alpha.js', WP_COLOR_PICKER_ALPHA_PLUGIN_FILE ),
+			[ WP_COLOR_PICKER_ALPHA_SCRIPT_NAME, 'customize-controls' ],
 			time(),
 			true
 		);
@@ -53,7 +51,7 @@ class Alpha_Color_Control extends WP_Customize_Color_Control {
 	public function to_json() {
 		parent::to_json();
 
-		/** Create the json alpha option using the input attrs. */
+		// Create the json alpha option using the input attrs.
 		ob_start();
 		$this->input_attrs();
 		$data = ob_get_clean();

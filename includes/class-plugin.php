@@ -20,11 +20,12 @@ class Plugin {
 	 * Action after_setup_theme
 	 */
 	public static function after_setup_theme() {
-		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ], PHP_INT_MAX );
-		add_action( 'customize_register', [ __CLASS__, 'customize_register' ], PHP_INT_MAX );
+		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ], 10 );
+		add_action( 'customize_register', [ __CLASS__, 'customize_register' ], 10 );
+		add_action( 'widgets_init', [ __CLASS__, 'widgets_init' ], 10 );
 
 		if ( is_admin() ) {
-			add_action( 'admin_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ], PHP_INT_MAX );
+			add_action( 'admin_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ], 10 );
 			add_action( 'admin_menu', __NAMESPACE__ . '\Admin\Plugin::admin_menu', PHP_INT_MAX );
 		}
 	}
@@ -96,5 +97,12 @@ class Plugin {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Action widgets_init
+	 */
+	public static function widgets_init() {
+		register_widget( __NAMESPACE__ . '\Widget' );
 	}
 }

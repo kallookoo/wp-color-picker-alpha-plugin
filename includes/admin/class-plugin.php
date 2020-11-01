@@ -21,7 +21,7 @@ class Plugin {
 	 *
 	 * @var string
 	 */
-	private static $hook_suffix;
+	private static $admin_page;
 
 	/**
 	 * Options
@@ -31,18 +31,11 @@ class Plugin {
 	private static $options;
 
 	/**
-	 * Action init
-	 */
-	public static function init() {
-		add_action( 'admin_menu', [ __CLASS__, 'admin_menu' ], PHP_INT_MAX );
-	}
-
-	/**
 	 * Action admin_menu
 	 */
 	public static function admin_menu() {
-		self::$options     = get_option( 'wp-color-picker-alpha', [] );
-		self::$hook_suffix = add_menu_page(
+		self::$options    = get_option( 'wp-color-picker-alpha', [] );
+		self::$admin_page = add_menu_page(
 			'Color Picker Alpha',
 			'Color Picker A.',
 			'manage_options',
@@ -50,31 +43,31 @@ class Plugin {
 			[ __CLASS__, 'add_options_page' ]
 		);
 
-		add_action( 'admin_init', [ __CLASS__, 'admin_init' ], PHP_INT_MAX );
-		add_action( 'load-' . self::$hook_suffix, [ __CLASS__, 'load_options_page' ], PHP_INT_MAX );
+		add_action( 'admin_init', [ __CLASS__, 'admin_init' ], 10 );
+		add_action( 'load-' . self::$admin_page, [ __CLASS__, 'load_options_page' ], 10 );
 	}
 
 	/**
 	 * Action admin_init
 	 */
 	public static function admin_init() {
-		add_action( 'admin_enqueue_scripts', [ __CLASS__, 'admin_enqueue_scripts' ], PHP_INT_MAX );
+		add_action( 'admin_enqueue_scripts', [ __CLASS__, 'admin_enqueue_scripts' ], 10 );
 
 		register_setting( 'wp-color-picker-alpha-register', 'wp-color-picker-alpha' );
 	}
 
 	/**
-	 * Action load-$hook_suffix
+	 * Action load-$admin_page
 	 */
 	public static function load_options_page() {
-		add_settings_section( 'wp-color-picker-alpha', 'Examples using the wp-color-picker-alpha script', '', self::$hook_suffix );
+		add_settings_section( 'wp-color-picker-alpha', 'Examples using the wp-color-picker-alpha script', '', self::$admin_page );
 
 		foreach ( Options::get_list() as $index => $option ) {
 			add_settings_field(
 				$option['name'],
 				'Example #' . ( $index + 1 ),
 				[ __CLASS__, 'render_field' ],
-				self::$hook_suffix,
+				self::$admin_page,
 				'wp-color-picker-alpha',
 				$option
 			);
@@ -121,10 +114,10 @@ class Plugin {
 	/**
 	 * Action admin_enqueue_scripts
 	 *
-	 * @param string $hook_suffix The current admin page.
+	 * @param string $admin_page The current admin page.
 	 */
-	public static function admin_enqueue_scripts( $hook_suffix ) {
-		if ( self::$hook_suffix === $hook_suffix ) {
+	public static function admin_enqueue_scripts( $admin_page ) {
+		if ( self::$admin_page === $admin_page ) {
 			wp_enqueue_style( 'wp-color-picker' );
 
 			wp_add_inline_script(
@@ -145,7 +138,7 @@ class Plugin {
 			<h2>WP Color Picker Alpha</h2>
 			<form method="post" action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>">
 				<?php settings_fields( 'wp-color-picker-alpha-register' ); ?>
-				<?php do_settings_sections( self::$hook_suffix ); ?>
+				<?php do_settings_sections( self::$admin_page ); ?>
 				<?php submit_button(); ?>
 			</form>
 		</div>

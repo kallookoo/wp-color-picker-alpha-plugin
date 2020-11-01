@@ -130,17 +130,17 @@ class Options {
 	 * @return array
 	 */
 	private static function get_colors( $total_colors = 1 ) {
-		$total  = ( is_numeric( $total_colors ) ? absint( $total_colors ) : 1 );
 		$colors = array_values( self::$colors );
-		$ct     = count( $colors );
+		$total  = ( is_numeric( $total_colors ) ? absint( $total_colors ) : 1 );
+		$count  = count( $colors );
 
-		if ( $ct > $total ) {
+		if ( $count > $total ) {
 			$colors = array_slice( $colors, 0, ( $total ? $total : 1 ) );
-		} elseif ( $ct < $total ) {
-			$total = ( $total - $ct );
+		} elseif ( $count < $total ) {
+			$total = ( $total - $count );
 			$index = 0;
 			while ( $total ) {
-				if ( $index > $ct ) {
+				if ( $index > $count ) {
 					$index = 0;
 				}
 

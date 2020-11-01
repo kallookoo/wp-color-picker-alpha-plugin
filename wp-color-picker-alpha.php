@@ -30,6 +30,7 @@ spl_autoload_register(
 );
 
 define( 'WP_COLOR_PICKER_ALPHA_PLUGIN_FILE', __FILE__ );
+// Random name to force for check the version of the script.
 define( 'WP_COLOR_PICKER_ALPHA_SCRIPT_NAME', md5( __FILE__ ) . time() );
 
 add_action( 'after_setup_theme', __NAMESPACE__ . '\Plugin::after_setup_theme', PHP_INT_MAX );
@@ -40,8 +41,13 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\Plugin::after_setup_theme', P
  * @since 3.0.0
  */
 function on_deactivation() {
+	// Option page.
 	delete_option( 'wp-color-picker-alpha' );
+	// Customize.
 	delete_option( 'wp-color-picker-alpha-customize' );
+	// Widget.
+	delete_option( 'widget_color-picker-alpha' );
+	// Cache of the list of the fields.
 	wp_cache_delete( 'wp-color-picker-alpha-options' );
 }
 register_deactivation_hook( __FILE__, __NAMESPACE__ . '\on_deactivation' );
