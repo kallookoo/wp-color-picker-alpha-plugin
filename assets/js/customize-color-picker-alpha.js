@@ -15,20 +15,15 @@
 				isHueSlider = ( this.params.mode === 'hue' ),
 				picker = this.container.find( '.color-picker-customize' ),
 				inited = false,
-				color;
+				color = picker.val().replace( /\s+/g, '' );
 
 			picker.wpColorPicker( {
 				change: function( event, ui ) {
-					if ( inited ) {
-						var current = ( isHueSlider ? ui.color.h() : picker.wpColorPicker( 'color' ) );
-						// It is only updated if they are different values.
-						if ( color !== current.replace( /\s+/g, '' ) ) {
-							control.setting.set( current );
-						}
-					} else {
-						color = picker.val().replace( /\s+/g, '' );
+					var current = ( isHueSlider ? ui.color.h() : picker.wpColorPicker( 'color' ) );
+					// It is only updated if they are different values.
+					if ( color !== current.replace( /\s+/g, '' ) ) {
+						control.setting.set( current );
 					}
-					inited = true;
 				},
 				clear: function( event ) {
 					// Set setting because not change if empty.
