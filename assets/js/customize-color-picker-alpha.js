@@ -19,7 +19,7 @@
 
 			picker.wpColorPicker( {
 				change: function( event, ui ) {
-					var current = ( isHueSlider ? ui.color.h() : picker.wpColorPicker( 'color' ) );
+					var current = ( isHueSlider ? ui.color.h() : picker.iris( 'color' ) );
 					// It is only updated if they are different values.
 					if ( color !== current.replace( /\s+/g, '' ) ) {
 						control.setting.set( current );
