@@ -17,13 +17,13 @@ namespace kallookoo\wpcpa;
 defined( 'ABSPATH' ) || exit;
 
 spl_autoload_register(
-	function ( $class ) {
-		if ( 0 === strncmp( __NAMESPACE__, $class, 15 ) ) {
-			$class = str_replace( [ '\\', '_' ], [ '/', '-' ], strtolower( substr( $class, 15 ) ) );
-			$class = preg_replace( '@([^/]+)$@', 'class-$1.php', $class );
+	function ( $item ) {
+		if ( 0 === strncmp( __NAMESPACE__, $item, 15 ) ) {
+			$item = str_replace( array( '\\', '_' ), array( '/', '-' ), strtolower( substr( $item, 15 ) ) );
+			$item = preg_replace( '@([^/]+)$@', 'class-$1.php', $item );
 
-			if ( file_exists( __DIR__ . '/includes' . $class ) ) {
-				require_once __DIR__ . '/includes' . $class;
+			if ( file_exists( __DIR__ . '/includes' . $item ) ) {
+				require_once __DIR__ . '/includes' . $item;
 			}
 		}
 	}

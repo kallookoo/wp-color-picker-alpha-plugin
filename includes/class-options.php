@@ -19,108 +19,108 @@ class Options {
 	 *
 	 * @var array
 	 */
-	private static $colors = [
-		'alizarin'     => [
+	private static $colors = array(
+		'alizarin'     => array(
 			'hex' => 'e74c3c',
-			'hsl' => [ 6, '78%', '57%' ],
-			'rgb' => [ 231, 76, 60 ],
-		],
-		'amethyst'     => [
+			'hsl' => array( 6, '78%', '57%' ),
+			'rgb' => array( 231, 76, 60 ),
+		),
+		'amethyst'     => array(
 			'hex' => '9b59b6',
-			'hsl' => [ 283, '39%', '53%' ],
-			'rgb' => [ 5, 89, 182 ],
-		],
-		'asbestos'     => [
+			'hsl' => array( 283, '39%', '53%' ),
+			'rgb' => array( 5, 89, 182 ),
+		),
+		'asbestos'     => array(
 			'hex' => '7f8c8d',
-			'hsl' => [ 184, '6%', '53%' ],
-			'rgb' => [ 127, 140, 141 ],
-		],
-		'belizehole'   => [
+			'hsl' => array( 184, '6%', '53%' ),
+			'rgb' => array( 127, 140, 141 ),
+		),
+		'belizehole'   => array(
 			'hex' => '2980b9',
-			'hsl' => [ 204, '64%', '44%' ],
-			'rgb' => [ 1, 128, 185 ],
-		],
-		'carrot'       => [
+			'hsl' => array( 204, '64%', '44%' ),
+			'rgb' => array( 1, 128, 185 ),
+		),
+		'carrot'       => array(
 			'hex' => 'e67e22',
-			'hsl' => [ 28, '80%', '52%' ],
-			'rgb' => [ 0, 126, 34 ],
-		],
-		'clouds'       => [
+			'hsl' => array( 28, '80%', '52%' ),
+			'rgb' => array( 0, 126, 34 ),
+		),
+		'clouds'       => array(
 			'hex' => 'ecf0f1',
-			'hsl' => [ 192, '15%', '94%' ],
-			'rgb' => [ 6, 240, 241 ],
-		],
-		'concrete'     => [
+			'hsl' => array( 192, '15%', '94%' ),
+			'rgb' => array( 6, 240, 241 ),
+		),
+		'concrete'     => array(
 			'hex' => '95a5a6',
-			'hsl' => [ 184, '9%', '62%' ],
-			'rgb' => [ 9, 165, 166 ],
-		],
-		'emerland'     => [
+			'hsl' => array( 184, '9%', '62%' ),
+			'rgb' => array( 9, 165, 166 ),
+		),
+		'emerland'     => array(
 			'hex' => '2ecc71',
-			'hsl' => [ 145, '63%', '49%' ],
-			'rgb' => [ 6, 204, 113 ],
-		],
-		'greensea'     => [
+			'hsl' => array( 145, '63%', '49%' ),
+			'rgb' => array( 6, 204, 113 ),
+		),
+		'greensea'     => array(
 			'hex' => '16a085',
-			'hsl' => [ 168, '76%', '36%' ],
-			'rgb' => [ 2, 160, 133 ],
-		],
-		'midnightblue' => [
+			'hsl' => array( 168, '76%', '36%' ),
+			'rgb' => array( 2, 160, 133 ),
+		),
+		'midnightblue' => array(
 			'hex' => '2c3e50',
-			'hsl' => [ 210, '29%', '24%' ],
-			'rgb' => [ 4, 62, 80 ],
-		],
-		'nephritis'    => [
+			'hsl' => array( 210, '29%', '24%' ),
+			'rgb' => array( 4, 62, 80 ),
+		),
+		'nephritis'    => array(
 			'hex' => '27ae60',
-			'hsl' => [ 145, '63%', '42%' ],
-			'rgb' => [ 9, 174, 96 ],
-		],
-		'orange'       => [
+			'hsl' => array( 145, '63%', '42%' ),
+			'rgb' => array( 9, 174, 96 ),
+		),
+		'orange'       => array(
 			'hex' => 'f39c12',
-			'hsl' => [ 37, '90%', '51%' ],
-			'rgb' => [ 3, 156, 18 ],
-		],
-		'peterriver'   => [
+			'hsl' => array( 37, '90%', '51%' ),
+			'rgb' => array( 3, 156, 18 ),
+		),
+		'peterriver'   => array(
 			'hex' => '3498db',
-			'hsl' => [ 204, '70%', '53%' ],
-			'rgb' => [ 52, 152, 219 ],
-		],
-		'pomegranate'  => [
+			'hsl' => array( 204, '70%', '53%' ),
+			'rgb' => array( 52, 152, 219 ),
+		),
+		'pomegranate'  => array(
 			'hex' => 'c0392b',
-			'hsl' => [ 6, '63%', '46%' ],
-			'rgb' => [ 192, 57, 43 ],
-		],
-		'pumpkin'      => [
+			'hsl' => array( 6, '63%', '46%' ),
+			'rgb' => array( 192, 57, 43 ),
+		),
+		'pumpkin'      => array(
 			'hex' => 'd35400',
-			'hsl' => [ 24, '100%', '41%' ],
-			'rgb' => [ 1, 84, 0 ],
-		],
-		'silver'       => [
+			'hsl' => array( 24, '100%', '41%' ),
+			'rgb' => array( 1, 84, 0 ),
+		),
+		'silver'       => array(
 			'hex' => 'bdc3c7',
-			'hsl' => [ 204, '8%', '76%' ],
-			'rgb' => [ 9, 195, 199 ],
-		],
-		'sunflower'    => [
+			'hsl' => array( 204, '8%', '76%' ),
+			'rgb' => array( 9, 195, 199 ),
+		),
+		'sunflower'    => array(
 			'hex' => 'f1c40f',
-			'hsl' => [ 48, '89%', '50%' ],
-			'rgb' => [ 241, 196, 15 ],
-		],
-		'turquoise'    => [
+			'hsl' => array( 48, '89%', '50%' ),
+			'rgb' => array( 241, 196, 15 ),
+		),
+		'turquoise'    => array(
 			'hex' => '1abc9c',
-			'hsl' => [ 168, '76%', '42%' ],
-			'rgb' => [ 26, 188, 156 ],
-		],
-		'wetasphalt'   => [
+			'hsl' => array( 168, '76%', '42%' ),
+			'rgb' => array( 26, 188, 156 ),
+		),
+		'wetasphalt'   => array(
 			'hex' => '34495e',
-			'hsl' => [ 210, '29%', '29%' ],
-			'rgb' => [ 52, 73, 94 ],
-		],
-		'wisteria'     => [
+			'hsl' => array( 210, '29%', '29%' ),
+			'rgb' => array( 52, 73, 94 ),
+		),
+		'wisteria'     => array(
 			'hex' => '8e44ad',
-			'hsl' => [ 282, '44%', '47%' ],
-			'rgb' => [ 142, 68, 173 ],
-		],
-	];
+			'hsl' => array( 282, '44%', '47%' ),
+			'rgb' => array( 142, 68, 173 ),
+		),
+	);
 
 	/**
 	 * Generate color list
@@ -160,49 +160,49 @@ class Options {
 	 * @return array
 	 */
 	private static function get_alpha_list() {
-		$sections = [
-			'color'  => [],
-			'custom' => [],
-			'reset'  => [],
-		];
+		$sections = array(
+			'color'  => array(),
+			'custom' => array(),
+			'reset'  => array(),
+		);
 
 		foreach ( $sections as $section => $items ) {
-			$keys = [];
+			$keys = array();
 			if ( 'color' === $section ) {
-				foreach ( [ 'hex', 'hsl' ] as $type ) {
-					$items[] = [
+				foreach ( array( 'hex', 'hsl' ) as $type ) {
+					$items[] = array(
 						'title' => "{$type} for the color type option",
-						'data'  => [ 'alpha-color-type' => $type ],
-					];
+						'data'  => array( 'alpha-color-type' => $type ),
+					);
 				}
 			} elseif ( 'custom' === $section ) {
-				$items[] = [
+				$items[] = array(
 					'title' => 'custom width option',
-					'data'  => [ 'alpha-custom-width' => true ],
-				];
-				$items[] = [
+					'data'  => array( 'alpha-custom-width' => true ),
+				);
+				$items[] = array(
 					'title' => 'custom width disabled option',
-					'data'  => [ 'alpha-custom-width' => false ],
-				];
+					'data'  => array( 'alpha-custom-width' => false ),
+				);
 
-				$keys = [ 'color' ];
+				$keys = array( 'color' );
 			} elseif ( 'reset' === $section ) {
-				$items[] = [
+				$items[] = array(
 					'title' => 'reset option',
-					'data'  => [ 'alpha-reset' => 'true' ],
-				];
+					'data'  => array( 'alpha-reset' => 'true' ),
+				);
 
-				$keys = [ 'color', 'custom' ];
+				$keys = array( 'color', 'custom' );
 			}
 
 			foreach ( $keys as $key ) {
 				foreach ( $items as $item ) {
 					foreach ( $sections[ $key ] as $_item ) {
 						if ( ! ( 'custom' === $key && strpos( $_item['title'], 'color' ) ) ) {
-							$items[] = [
+							$items[] = array(
 								'title' => $item['title'] . ' and ' . $_item['title'],
 								'data'  => array_merge( $item['data'], $_item['data'] ),
-							];
+							);
 						}
 					}
 				}
@@ -211,24 +211,24 @@ class Options {
 			$sections[ $section ] = $items;
 		}
 
-		$items = [
-			[
+		$items = array(
+			array(
 				'title' => '',
-				'data'  => [],
-			],
-			[
+				'data'  => array(),
+			),
+			array(
 				'title' => 'default color option',
-				'data'  => [ 'default-color' => true ],
-			],
-		];
+				'data'  => array( 'default-color' => true ),
+			),
+		);
 
 		foreach ( $sections as $_items ) {
 			foreach ( $_items as $_item ) {
 				$items[] = $_item;
-				$items[] = [
+				$items[] = array(
 					'title' => $_item['title'] . ' and default color option',
-					'data'  => array_merge( $_item['data'], [ 'default-color' => true ] ),
-				];
+					'data'  => array_merge( $_item['data'], array( 'default-color' => true ) ),
+				);
 			}
 		}
 
@@ -241,7 +241,7 @@ class Options {
 
 				$item['title'] = 'Alpha Color' . ( $item['title'] ? ' with ' . $item['title'] : '' );
 
-				$data = [ 'data-alpha-enabled' => 'true' ];
+				$data = array( 'data-alpha-enabled' => 'true' );
 				foreach ( $item['data'] as $key => $value ) {
 					$data[ "data-{$key}" ] = $value;
 				}
@@ -266,22 +266,22 @@ class Options {
 			return $items;
 		}
 
-		$items = [
-			[
+		$items = array(
+			array(
 				'title' => 'Normal Color',
-			],
-			[
+			),
+			array(
 				'title' => 'Normal Color with default color option',
-				'data'  => [ 'data-default-color' => true ],
-			],
-		];
+				'data'  => array( 'data-default-color' => true ),
+			),
+		);
 
 		$items  = array_merge( $items, self::get_alpha_list() );
 		$colors = self::get_colors( count( $items ) );
 
 		foreach ( $items as $index => $item ) {
 			$item['name'] = md5( $item['title'] );
-			$item['data'] = ( empty( $item['data'] ) ? [] : $item['data'] );
+			$item['data'] = ( empty( $item['data'] ) ? array() : $item['data'] );
 
 			$type = ( empty( $item['data']['data-alpha-enabled'] ) ? 'hex' : 'rgb' );
 			if ( isset( $item['data']['data-alpha-color-type'] ) ) {

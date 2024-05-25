@@ -8,7 +8,7 @@
 
 namespace kallookoo\wpcpa\Customize;
 
-use \WP_Customize_Color_Control;
+use WP_Customize_Color_Control;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -37,7 +37,7 @@ class Alpha_Color_Control extends WP_Customize_Color_Control {
 		wp_enqueue_script(
 			WP_COLOR_PICKER_ALPHA_SCRIPT_NAME . '-customize-color-picker-alpha',
 			plugins_url( 'assets/js/customize-color-picker-alpha.js', WP_COLOR_PICKER_ALPHA_PLUGIN_FILE ),
-			[ WP_COLOR_PICKER_ALPHA_SCRIPT_NAME, 'customize-controls' ],
+			array( WP_COLOR_PICKER_ALPHA_SCRIPT_NAME, 'customize-controls' ),
 			time(),
 			true
 		);

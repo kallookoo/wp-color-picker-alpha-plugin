@@ -7,7 +7,7 @@
 
 namespace kallookoo\wpcpa;
 
-use \kallookoo\wpcpa\Customize\Alpha_Color_Control;
+use kallookoo\wpcpa\Customize\Alpha_Color_Control;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -20,12 +20,12 @@ class Plugin {
 	 * Action after_setup_theme
 	 */
 	public static function after_setup_theme() {
-		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ], 10 );
-		add_action( 'customize_register', [ __CLASS__, 'customize_register' ], 10 );
-		add_action( 'widgets_init', [ __CLASS__, 'widgets_init' ], 10 );
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_scripts' ), 10 );
+		add_action( 'customize_register', array( __CLASS__, 'customize_register' ), 10 );
+		add_action( 'widgets_init', array( __CLASS__, 'widgets_init' ), 10 );
 
 		if ( is_admin() ) {
-			add_action( 'admin_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ], 10 );
+			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_scripts' ), 10 );
 			add_action( 'admin_menu', __NAMESPACE__ . '\Admin\Plugin::admin_menu', PHP_INT_MAX );
 		}
 	}
@@ -37,7 +37,7 @@ class Plugin {
 		wp_register_script(
 			WP_COLOR_PICKER_ALPHA_SCRIPT_NAME,
 			plugins_url( 'assets/js/wp-color-picker-alpha.js', WP_COLOR_PICKER_ALPHA_PLUGIN_FILE ),
-			[ 'wp-color-picker' ],
+			array( 'wp-color-picker' ),
 			time(),
 			true
 		);
@@ -54,27 +54,27 @@ class Plugin {
 		/** Add a customize section. */
 		$wp_customize->add_section(
 			'wp_color_picker_alpha',
-			[
+			array(
 				'title'    => 'Color Picker Alpha',
 				'priority' => -100, /** Ensure this section add to first sections. */
-			]
+			)
 		);
 		/** Add a controls with all possibilities of the script. */
 		foreach ( Options::get_list() as $index => $option ) {
 			/** Change the name for use some name option. */
 			$name = sprintf( 'wp-color-picker-alpha-customize[%s]', $option['name'] );
 			/** Create the input attributes. */
-			$input_attrs = array_merge( [ 'name' => $name ], $option['data'] );
+			$input_attrs = array_merge( array( 'name' => $name ), $option['data'] );
 
 			if ( ! empty( $option['value'] ) ) {
 				$input_attrs['value'] = $option['value'];
 			}
 
-			$setting_args = [
+			$setting_args = array(
 				'sanitize_callback' => 'sanitize_text_field',
 				'transport'         => 'postMessage',
 				'type'              => 'option',
-			];
+			);
 
 			/** If exists the default color add to the setting. */
 			if ( ! empty( $option['data']['data-default-color'] ) ) {
@@ -88,12 +88,12 @@ class Plugin {
 				new Alpha_Color_Control(
 					$wp_customize,
 					$name,
-					[
+					array(
 						'label'       => 'Example #' . ( $index + 1 ),
 						'description' => $option['title'],
 						'section'     => 'wp_color_picker_alpha',
 						'input_attrs' => $input_attrs,
-					]
+					)
 				)
 			);
 		}

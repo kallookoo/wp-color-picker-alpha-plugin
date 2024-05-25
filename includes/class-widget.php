@@ -7,7 +7,7 @@
 
 namespace kallookoo\wpcpa;
 
-use \WP_Widget;
+use WP_Widget;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -28,7 +28,7 @@ class Widget extends WP_Widget {
 	 *
 	 * @var array
 	 */
-	protected $fields = [];
+	protected $fields = array();
 
 	/**
 	 * Sets up a new widget instance.
@@ -37,15 +37,15 @@ class Widget extends WP_Widget {
 		parent::__construct(
 			'color-picker-alpha',
 			'Color Picker Alpha',
-			[
+			array(
 				'classname'                   => 'widget_color_picker_alpha',
 				'description'                 => 'Testing Color Picker Alpha',
 				'customize_selective_refresh' => true,
-			],
-			[
+			),
+			array(
 				'width'  => 400,
 				'height' => 350,
-			]
+			)
 		);
 
 		// Generate fields template.
@@ -53,13 +53,13 @@ class Widget extends WP_Widget {
 			foreach ( Options::get_list() as $index => $option ) {
 				$this->fields[ $index ] = wp_parse_args(
 					$option['data'],
-					[
+					array(
 						'id'    => $option['name'],
 						'name'  => $option['name'],
 						'class' => 'color-picker-widget',
 						'value' => ( empty( $option['value'] ) ? '' : $option['value'] ),
 						'title' => $option['title'],
-					]
+					)
 				);
 			}
 		}
@@ -76,7 +76,7 @@ class Widget extends WP_Widget {
 		if ( ! $this->registered ) {
 			// Note that the widgets component in the customizer will also do
 			// the 'admin_print_scripts-widgets.php' action in WP_Customize_Widgets::print_scripts().
-			add_action( 'admin_print_scripts-widgets.php', [ $this, 'enqueue_admin_scripts' ] );
+			add_action( 'admin_print_scripts-widgets.php', array( $this, 'enqueue_admin_scripts' ) );
 			$this->registered = true;
 		}
 	}
@@ -90,7 +90,7 @@ class Widget extends WP_Widget {
 		?>
 		<div style="overflow-y: scroll; max-height: 340px; margin-bottom: 10px;">
 		<?php
-		$instance = ( is_array( $instance ) ? $instance : [] );
+		$instance = ( is_array( $instance ) ? $instance : array() );
 		foreach ( $this->fields as $index => $field ) {
 			if ( isset( $instance[ $field['name'] ] ) ) {
 				$field['value'] = $instance[ $field['name'] ];
@@ -141,7 +141,7 @@ class Widget extends WP_Widget {
 		wp_enqueue_script(
 			WP_COLOR_PICKER_ALPHA_SCRIPT_NAME . '-widget-color-picker-alpha',
 			plugins_url( 'assets/js/widget-color-picker-alpha.js', WP_COLOR_PICKER_ALPHA_PLUGIN_FILE ),
-			[ WP_COLOR_PICKER_ALPHA_SCRIPT_NAME ],
+			array( WP_COLOR_PICKER_ALPHA_SCRIPT_NAME ),
 			time(),
 			true
 		);
