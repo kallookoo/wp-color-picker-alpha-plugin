@@ -7,7 +7,7 @@
 
 namespace kallookoo\wpcpa\Admin;
 
-use \kallookoo\wpcpa\Options;
+use kallookoo\wpcpa\Options;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -34,24 +34,24 @@ class Plugin {
 	 * Action admin_menu
 	 */
 	public static function admin_menu() {
-		self::$options    = get_option( 'wp-color-picker-alpha', [] );
+		self::$options    = get_option( 'wp-color-picker-alpha', array() );
 		self::$admin_page = add_menu_page(
 			'Color Picker Alpha',
 			'Color Picker A.',
 			'manage_options',
 			'wp-color-picker-alpha',
-			[ __CLASS__, 'add_options_page' ]
+			array( __CLASS__, 'add_options_page' )
 		);
 
-		add_action( 'admin_init', [ __CLASS__, 'admin_init' ], 10 );
-		add_action( 'load-' . self::$admin_page, [ __CLASS__, 'load_options_page' ], 10 );
+		add_action( 'admin_init', array( __CLASS__, 'admin_init' ), 10 );
+		add_action( 'load-' . self::$admin_page, array( __CLASS__, 'load_options_page' ), 10 );
 	}
 
 	/**
 	 * Action admin_init
 	 */
 	public static function admin_init() {
-		add_action( 'admin_enqueue_scripts', [ __CLASS__, 'admin_enqueue_scripts' ], 10 );
+		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'admin_enqueue_scripts' ), 10 );
 
 		register_setting( 'wp-color-picker-alpha-register', 'wp-color-picker-alpha' );
 	}
@@ -66,7 +66,7 @@ class Plugin {
 			add_settings_field(
 				$option['name'],
 				'Example #' . ( $index + 1 ),
-				[ __CLASS__, 'render_field' ],
+				array( __CLASS__, 'render_field' ),
 				self::$admin_page,
 				'wp-color-picker-alpha',
 				$option
