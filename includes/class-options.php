@@ -169,7 +169,7 @@ class Options {
 		foreach ( $sections as $section => $items ) {
 			$keys = array();
 			if ( 'color' === $section ) {
-				foreach ( array( 'hex', 'hsl' ) as $type ) {
+				foreach ( array( 'hex', 'octohex', 'hsl' ) as $type ) {
 					$items[] = array(
 						'title' => "{$type} for the color type option",
 						'data'  => array( 'alpha-color-type' => $type ),
@@ -288,13 +288,21 @@ class Options {
 				$type = $item['data']['data-alpha-color-type'];
 			}
 
-			$color = $colors[ $index ][ $type ];
+			if ( 'octohex' === $type ) {
+				$color = $colors[ $index ]['hex'];
+			} else {
+				$color = $colors[ $index ][ $type ];
+			}
 			if ( is_array( $color ) ) {
 				$color = implode( ', ', $color );
 				/** Change alpha (odd/even) to check the script use the correct value. */
 				$color = sprintf( '%sa(%s, 0.%s)', $type, $color, ( $index % 2 ? 5 : 75 ) );
 			} else {
 				$color = "#{$color}";
+				if ( 'octohex' === $type ) {
+					/** Change alpha (odd/even) to check the script use the correct value. */
+					$color .= ( $index % 2 ? '80' : 'bf' );
+				}
 			}
 
 			$item['value'] = $color;

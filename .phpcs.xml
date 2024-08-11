@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ruleset name="Current project">
+	<!-- Configure the PHP Compatibility WP version. -->
+	<config name="testVersion" value="8.0-"/>
+
+	<rule ref="WordPress-Excl"/>
+</ruleset>
